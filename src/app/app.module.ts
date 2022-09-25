@@ -8,18 +8,25 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorProviders } from './shared/_helpers/auth.interceptor';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './pages/home/home.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    NgbModule,
     JwtModule.forRoot({
       config: {},
-    })
+    }),
+    
   ],
   providers: [LoginService, AuthGuardService, AuthInterceptorProviders],
   bootstrap: [AppComponent]

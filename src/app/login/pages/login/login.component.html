@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="d-flex align-items-center justify-content-center min-vh-100">
+    <div class="p-5" style="width: 450px;">
+        <div class="d-flex justify-content-center mb-3">
+            <img src="https://uploads-ssl.webflow.com/5e2088af647de0b43c9ff21d/61780b66eefa51ff49c09fa0_Horizontal-5-p-500.png"
+                alt="logo Instituto Romanni" class="img-logo" />
+        </div>
+        <div (keydown.enter)="fazerLogin()">
+            <div class="mb-3">
+                <label class="form-label" style="font-size: small;">E-MAIL</label>
+                <input type="email" class="form-control rounded-pill" [(ngModel)]="email"
+                    placeholder="Digite seu e-mail" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label" style="font-size: small;">SENHA</label>
+                <input type="password" class="form-control rounded-pill" [(ngModel)]="password" placeholder="*****" />
+            </div>
+            <span class="text-warning" *ngIf="loginFailed">* Email ou senha Incorretos</span>
+            <button class="btn btn-primary py-3 rounded-pill mt-3" style="width: 100%; font-size: small;"
+                (click)="fazerLogin()">ENTRAR</button>
+        </div>
+        <span class="m-2">Ainda não tem uma conta? <a class="primary-link" style="cursor: pointer;"
+                [routerLink]="['/sign']">CLIQUE AQUI ➤</a></span>
+    </div>
+</div>
