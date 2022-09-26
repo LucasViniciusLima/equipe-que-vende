@@ -11,12 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SaleDetailComponent } from './shared/components/sale-detail/sale-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    SaleDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -25,9 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     JwtModule.forRoot({
       config: {},
-    }),
-    
-  ],
+    }),    
+  ],  
   providers: [LoginService, AuthGuardService, AuthInterceptorProviders],
   bootstrap: [AppComponent]
 })

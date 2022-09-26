@@ -42,4 +42,8 @@ export class LoginService {
     return localStorage.getItem(this.TOKEN_NAME) || '';
   }
 
+  createNewUser(user: { name: string, email: string, password: string, checkout_id: string }) {
+    return this.http.post<any>(`${this.url}user`, user, { withCredentials: false });
+  }
+
 }

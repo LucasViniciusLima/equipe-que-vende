@@ -1,1 +1,42 @@
-<p>register works!</p>
+<div class="d-flex align-items-center justify-content-center vw-100 vh-100">
+    <div class="p-5" style="width: 450px;">
+        <div class="d-flex justify-content-center mb-3">
+            <img src="https://uploads-ssl.webflow.com/5e2088af647de0b43c9ff21d/61780b66eefa51ff49c09fa0_Horizontal-5-p-500.png"
+                alt="logo Instituto Romanni" class="img-logo" />
+        </div>
+        <div (keydown.enter)="criarConta()">
+            <span class="text-warning" *ngIf="contaExistente">*Este e-mail já foi cadastrado, tente fazer login.</span>
+            <div class="mb-3">
+                <label class="form-label" style="font-size: small;">Nome</label>
+                <input type="email" class="form-control rounded-pill" [(ngModel)]="nome"
+                    placeholder="Digite seu nome" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" style="font-size: small;">E-MAIL</label>
+                <input type="email" class="form-control rounded-pill" [(ngModel)]="email"
+                    placeholder="Digite seu e-mail" />
+            </div>
+            <span class="text-warning" *ngIf="emailErrado">*Digite um e-mail válido</span>
+            <div class="mb-3">
+                <label class="form-label" style="font-size: small;">SENHA</label>
+                <input type="password" [(ngModel)]="senha" class="form-control rounded-pill" placeholder="*****" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" style="font-size: small;">CONFIRMAR SENHA</label>
+                <input type="password" [(ngModel)]="senhaConfirmar" class="form-control rounded-pill"
+                    placeholder="*****" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" style="font-size: small;">CHECKOUT ID</label>
+                <input type="text" [(ngModel)]="checkout_id" class="form-control rounded-pill"
+                    placeholder="seu checkout_id (consultar na plataforma Guru)" />
+            </div>            
+            <span class="text-warning" *ngIf="!senhasIguais()">*Tenha certeza de que as senhas são iguais</span>
+            <button class="btn btn-primary py-3 rounded-pill mt-2"
+                [class]="campoEstaPreenchido() ? 'btn-primary': 'btn-secondary'" style="width: 100%; font-size: small;"
+                (click)="criarConta()">CADASTRAR</button>
+        </div>
+        <span class="m-2">Já tem uma conta?<a class="primary-link" style="cursor: pointer;" [routerLink]="['/auth/login']">
+                CLIQUE AQUI ➤</a></span>
+    </div>
+</div>
