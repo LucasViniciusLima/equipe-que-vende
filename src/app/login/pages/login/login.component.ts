@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login({ email: this.email, password: this.password }).subscribe(response => {
       this.loginService.doLoginUser(this.email, response["access_token"]);
+      //get user checkout id
       this.router.navigate(['home']);
     });
 
