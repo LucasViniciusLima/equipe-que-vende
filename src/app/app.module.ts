@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SaleDetailComponent } from './shared/components/sale-detail/sale-detail.component';
+import { SalesService } from './shared/services/sales.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { SaleDetailComponent } from './shared/components/sale-detail/sale-detail
       config: {},
     }),    
   ],  
-  providers: [LoginService, AuthGuardService, AuthInterceptorProviders],
+  providers: [LoginService, SalesService, AuthGuardService, AuthInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
