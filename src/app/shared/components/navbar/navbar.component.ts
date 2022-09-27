@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/login/user.entity';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'navbar',
@@ -12,9 +13,12 @@ export class NavbarComponent implements OnInit {
     admin: false
   }
 
-  constructor() { }
+  constructor(private readonly usersService: UsersService) { }
 
   ngOnInit(): void {
+    this.user = {
+      ...this.usersService.user
+    };
   }
 
 }

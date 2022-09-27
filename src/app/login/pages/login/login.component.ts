@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../login.service';
 import { Router } from '@angular/router';
 import { User } from '../../user.entity';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private userService: UsersService
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +31,11 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login({ email: this.email, password: this.password }).subscribe(response => {
       this.loginService.doLoginUser(this.email, response["access_token"]);
-      //get user checkout id
+
+      this.userService.getUser(this.email).subscribe((response: User) => {
+        this.userService.user = response;
+      });
+
       this.router.navigate(['home']);
     });
 
