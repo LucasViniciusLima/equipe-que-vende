@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/login/login.service';
 import { User } from 'src/app/login/user.entity';
+import { SalesService } from '../../services/sales.service';
 import { UsersService } from '../../services/users.service';
 
 @Component({
@@ -13,12 +15,14 @@ export class NavbarComponent implements OnInit {
     admin: false
   }
 
-  constructor(private readonly usersService: UsersService) { }
+  constructor(private readonly usersService: UsersService, private readonly loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.user = {
-      ...this.usersService.user
-    };
+    this.usersService.getUser(this.loginService.emailUser()).subscribe(user => {
+      this.user = {
+        ...user
+      };
+    });
   }
 
 }

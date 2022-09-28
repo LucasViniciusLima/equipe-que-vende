@@ -25,7 +25,7 @@
                     [routerLinkActive]="'activedRoute'" *ngIf="user.adm"><i
                             class="myIcons bi bi-file-earmark-bar-graph-fill me-3"></i>Vendas Gerais
             </div>
-            <div class="py-2 myNavItens" [routerLink]="['/minhasvendas']"
+            <div class="py-2 myNavItens" [routerLink]="['/sale/user']" [state]="{ user: user }"
                     [routerLinkActive]="'activedRoute'">
                     <i class="myIcons bi bi-graph-up-arrow me-3"></i>Minhas Vendas
             </div>

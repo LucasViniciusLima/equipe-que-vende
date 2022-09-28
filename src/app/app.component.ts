@@ -9,9 +9,7 @@ import { LoginService } from './login/login.service';
 export class AppComponent {
   title = 'equipe-que-vende';
 
-  constructor(
-    private loginService: LoginService
-  ) { }
+  constructor(private loginService: LoginService) { }
 
   showNavbar() {
     return (this.loginService.isAuthenticated());

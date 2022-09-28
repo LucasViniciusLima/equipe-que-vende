@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,4 @@ export class SalesService {
   getUserSales(checkout_id: string) {
     return this.http.get<any>(`${this.url}sale/${checkout_id}`, { withCredentials: false });
   }
-
 }

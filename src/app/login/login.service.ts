@@ -13,8 +13,8 @@ export class LoginService {
   ) { }
 
   private readonly TOKEN_NAME = 'eqvendas_auth';
+  private readonly EMAIL_USER = 'UserEmail';
   private readonly url: string = `http://localhost:3000/api/v1/`;
-  loggedUser: string = '';
 
   isAuthenticated() {
     const token = localStorage.getItem(this.TOKEN_NAME) || undefined;
@@ -25,13 +25,21 @@ export class LoginService {
     return this.http.post<any>(`${this.url}login`, user, { withCredentials: false });
   }
 
-  doLoginUser(username: string, tokens: string) {
-    this.loggedUser = username;
+  doLoginUser(email: string, tokens: string) {
+    this.storeEmailUser(email);
     this.storeTokens(tokens);
   }
 
   storeTokens(token: string) {
     localStorage.setItem(this.TOKEN_NAME, token);
+  }
+
+  storeEmailUser(email: string) {
+    localStorage.setItem(this.EMAIL_USER, email);
+  }
+
+  emailUser() {
+    return localStorage.getItem(this.EMAIL_USER) || '';
   }
 
   logout() {

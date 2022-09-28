@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SalesService } from 'src/app/shared/services/sales.service';
+import { Sale } from '../sale.entity';
+
 
 @Component({
   selector: 'app-sale',
@@ -8,14 +11,19 @@ import { SalesService } from 'src/app/shared/services/sales.service';
 })
 export class SaleComponent implements OnInit {
 
-  constructor(private readonly salesService: SalesService) { }
+  sales: Sale[] = [];
+  
+  constructor(private readonly salesService: SalesService, private router: Router) {
+    let currentNav = this.router.getCurrentNavigation()?.extras?.state;        
+
+    if (currentNav != null) {
+      this.salesService.getUserSales(currentNav['user']?.checkout_id).subscribe(sales => {
+        this.sales = sales;
+      });
+    }
+  }
 
   ngOnInit(): void {
-    this.salesService.getUserSales('957352c8-7b42-4631-9eb6-ea822865ddee33').subscribe(sales => {
-      console.log(sales);
-      //works
-      //change to get checkout id by the service login or watever
-    });
   }
 
 }
