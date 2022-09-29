@@ -11,12 +11,13 @@ export class SaleDetailComponent implements OnInit {
 
   sale: any;
   user: any;
+  navState: any;
 
   constructor(private route: Router, private userService: UsersService) {
-    const navState = this.route.getCurrentNavigation()?.extras?.state;
+    this.navState = this.route.getCurrentNavigation()?.extras?.state; 
 
-    if (navState != null) {
-      this.sale = navState;
+    if (this.navState != null) {
+      this.sale = this.navState;
 
       this.userService.getUserByCheckoutId(this.sale?.source?.checkout_id).subscribe(user => {
         this.user = user;
@@ -26,6 +27,5 @@ export class SaleDetailComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 
 }
