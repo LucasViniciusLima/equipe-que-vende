@@ -16,4 +16,8 @@ export class UsersService {
     return this.http.get<any>(`${this.url}user/${email}`, { withCredentials: false });
   }
 
+  getUserByCheckoutId(checkout_id: string) {
+    return this.http.get<any>(`${this.url}user/checkoutid/${checkout_id}`, { withCredentials: false });
+  }
+
 }
