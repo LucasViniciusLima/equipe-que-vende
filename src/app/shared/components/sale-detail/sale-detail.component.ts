@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Sale } from 'src/app/pages/sales/sale.entity';
 
 @Component({
   selector: 'app-sale-detail',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaleDetailComponent implements OnInit {
 
-  constructor() { }
+  sale: any;
+
+  constructor(private route: Router) {
+    const navState = this.route.getCurrentNavigation()?.extras?.state;
+
+    if (navState != null) {
+      this.sale = navState;
+    }
+
+  }
 
   ngOnInit(): void {
   }
+
 
 }

@@ -1,1 +1,35 @@
-<p>sale-detail works!</p>
+<table class="table table-striped table-dark myTable">
+    <thead>
+        <tr>
+            <th colspan="2">Vendedor</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th colspan="2" class="text-warning">{{ 'sale?.salesman' }}</th>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th scope="col">Nome Cliente</th>
+            <th scope="col">Telefone Cliente</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ sale?.contact.name }}</td>
+            <td>{{ sale?.contact.phone_number }}</td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th colspan="2">E-mail Cliente</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="2">{{ sale?.contact.email }}</td>
+        </tr>
+    </tbody>
+</table>
+<p class="text-right">Venda criada em: <span class="text-warning">{{ sale?.dates.created_at | date: 'dd/MM/yyyy' }}</span></p>
