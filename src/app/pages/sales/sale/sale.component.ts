@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SalesService } from 'src/app/shared/services/sales.service';
 import { Sale } from '../sale.entity';
 
@@ -13,11 +13,11 @@ export class SaleComponent implements OnInit {
 
   sales: Sale[] = [];
   
-  constructor(private readonly salesService: SalesService, private router: Router) {
-    let currentNav = this.router.getCurrentNavigation()?.extras?.state;        
+  constructor(private readonly salesService: SalesService, private router: Router, private route: ActivatedRoute) {
+    let id = this.route.snapshot.paramMap.get('checkout_id');    
 
-    if (currentNav != null) {
-      this.salesService.getUserSales(currentNav['user']?.checkout_id).subscribe(sales => {
+    if (id != null) {
+      this.salesService.getUserSales(id).subscribe(sales => {
         this.sales = sales;
       });
     }

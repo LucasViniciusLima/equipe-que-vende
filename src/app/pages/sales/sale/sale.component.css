@@ -1,0 +1,12 @@
+.myTable{
+    background-color: #303030!important;
+}
+.text-relatorio{
+    font-size: small;
+}
+
+@media (max-width: 905){
+    .text-relatorio{
+        font-size: 10px!important;
+    }
+}

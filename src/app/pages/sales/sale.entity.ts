@@ -1,5 +1,6 @@
 
 export interface Sale {
+    _id?: string,
     status: string,
     dates: {
         created_at: string,
