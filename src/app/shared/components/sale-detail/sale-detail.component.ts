@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Sale } from 'src/app/pages/sales/sale.entity';
 
 @Component({
   selector: 'app-sale-detail',
@@ -17,7 +16,6 @@ export class SaleDetailComponent implements OnInit {
     if (navState != null) {
       this.sale = navState;
     }
-
   }
 
   ngOnInit(): void {
