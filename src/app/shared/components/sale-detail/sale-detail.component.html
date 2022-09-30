@@ -17,8 +17,8 @@
     </thead>
     <tbody>
         <tr>
-            <td>{{ sale?.contact.name }}</td>
-            <td>{{ sale?.contact.phone_number }}</td>
+            <td>{{ actSale()?.contact.name || sale?.contact.name }}</td>
+            <td>{{ actSale()?.contact.phone_number || sale?.contact.phone_number }}</td>
         </tr>
     </tbody>
     <thead>
@@ -28,8 +28,8 @@
     </thead>
     <tbody>
         <tr>
-            <td colspan="2">{{ sale?.contact.email }}</td>
+            <td colspan="2">{{ actSale()?.contact.email || sale?.contact.email }}</td>
         </tr>
     </tbody>
 </table>
-<p class="text-right">Venda criada em: <span class="text-warning">{{ sale?.dates.created_at | date: 'dd/MM/yyyy' }}</span></p>
+<p class="text-right">Venda criada em: <span class="text-warning">{{ actSale()?.dates.created_at || sale?.dates.created_at | date: 'dd/MM/yyyy' }}</span></p>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 
 @Component({
@@ -13,19 +13,25 @@ export class SaleDetailComponent implements OnInit {
   user: any;
   navState: any;
 
-  constructor(private route: Router, private userService: UsersService) {
-    this.navState = this.route.getCurrentNavigation()?.extras?.state; 
+  constructor(private route: Router, private userService: UsersService, private activRoute: ActivatedRoute) {
+    this.navState = this.route.getCurrentNavigation()?.extras?.state;
 
-    if (this.navState != null) {
-      this.sale = this.navState;
+    this.sale = this.actSale();
 
-      this.userService.getUserByCheckoutId(this.sale?.source?.checkout_id).subscribe(user => {
-        this.user = user;
-      });
-    }
+    this.userService.getUserByCheckoutId(this.sale?.source?.checkout_id).subscribe(user => {
+      this.user = user;
+    });
   }
 
   ngOnInit(): void {
+  }
+
+  actSale(): any {
+    if (this.navState != null) {
+      let _id = this.activRoute.snapshot.paramMap.get('sale_id');
+      return this.navState.filter((sales: any) => sales._id === _id)[0];
+    }
+    return null;
   }
 
 }
