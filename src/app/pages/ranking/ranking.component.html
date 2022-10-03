@@ -1,0 +1,33 @@
+<div class="container p-md-5">
+    <h3 class="mb-3">Ranking Mensal</h3>
+
+    <div>
+        <table class="table table-dark table-striped myTable">
+            <thead>
+                <tr class="border-bottom-orange">
+                    <th scope="col" class="col-1 text-center">Rank</th>
+                    <th scope="col" class="col-1"></th>
+                    <th scope="col" class="col-9">Nome</th>
+                    <th scope="col" class="text-center">Vendas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rankItem of rankList; let i = index;" [ngClass]="{'border-orange': i < 3}">
+                    <th class="text-center py-4" [ngClass]="{'orangeText h5': i < 3}">{{ i+1 }}</th>
+                    <td class="col-1 py-4">
+                        <img [src]="rankItem?.user.profilePhoto" alt="user foto" class="avatar ml-2" />
+                    </td>                    
+
+                    <td scope="row" class="col-9"><div [ngClass]="{'h5': i < 3}">{{ rankItem.user.name }}</div>
+                        <span class="rounded-pill text-center fw-bold my-1 px-2 pb-1"
+                            style="background-color: #ff6620">
+                            {{ rank(rankItem.salesCount) }}
+                        </span>
+                    </td>
+                    <td class="text-center py-4" [ngClass]="{'h5': i < 3}">{{ rankItem.salesCount }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

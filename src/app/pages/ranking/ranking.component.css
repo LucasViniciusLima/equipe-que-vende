@@ -1,0 +1,24 @@
+.myTable{
+    background-color: #303030!important;
+}
+
+
+.avatar{
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    border: 1px solid #ff6620;
+    overflow: hidden;
+}
+
+.orangeText{
+    color: #ff6620;
+}
+
+.border-orange{
+    border: 2px solid #ff6620!important;
+}
+
+.border-bottom-orange{
+    border-bottom: 2.7px solid #ff6620!important;
+}
