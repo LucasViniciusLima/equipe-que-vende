@@ -12,7 +12,7 @@ import { UsersService } from '../../services/users.service';
 export class NavbarComponent implements OnInit {
 
   user: any = {
-    admin: false
+    admin: true
   }
 
   constructor(private readonly usersService: UsersService, private readonly loginService: LoginService) { }
@@ -20,7 +20,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.getUser(this.loginService.emailUser()).subscribe(user => {
       this.user = {
-        ...user
+        ...user,
+        admin: true
       };
     });
   }

@@ -14,4 +14,8 @@ export class SalesService {
   getUserSales(checkout_id: string) {
     return this.http.get<any>(`${this.url}sale/${checkout_id}`, { withCredentials: false });
   }
+
+  getAllSales() {
+    return this.http.get<any>(`${this.url}sale`, { withCredentials: false });
+  }
 }
