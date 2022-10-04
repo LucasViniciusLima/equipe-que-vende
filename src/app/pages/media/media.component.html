@@ -1,0 +1,15 @@
+<add-new-media></add-new-media>
+<div *ngFor="let category of category">
+    <div class=" py-2">
+        <h3 class="mb-3">{{ category?.categoria | titlecase }}</h3>
+        <div class="row">
+            <div class="col-2 p-2 my-bg-dark m-1 rounded" *ngFor="let foto of category?.depoimentosFoto">
+                <div style="cursor: pointer; height: 100%;" class="row">
+                    <img [src]="'data:image/png;base64,'+foto.data" width="100%" height="auto"
+                        class="foto col-12 align-self-center" />
+                    <p class="text-center h6 my-2 col align-self-end">{{ foto?.title | titlecase}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

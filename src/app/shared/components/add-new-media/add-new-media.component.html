@@ -1,0 +1,68 @@
+<button type="button" class="btn btn-primary btn-nova-venda mx-2 px-4" (click)="openMidiaModal()">Nova Midia em
+    Foto</button>
+
+
+<div [ngClass]="{'show': midiaModalOpen}" [ngStyle]="{'display': midiaModalOpen ? 'block':'none'}"
+    class="modal fade bg-dark-transparent" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content bg-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nova midia em Foto</h5>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="cancelar()"><i class="bi bi-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Titulo:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Titulo do Vídeo"
+                            [(ngModel)]="mediaTitle" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label">Tag da midia:</label>
+                        <select class="custom-select" [(ngModel)]="selectedTag">
+                            <option *ngFor="let tag of tags" [ngValue]="tag">{{ tag }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="col-form-label">Selecione a foto:</label>
+                        <br>
+                        <input type="file" (change)="upload($event)" accept="image/*" #fileInput />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    (click)="cancelar()">Fechar</button>
+                <button type="button" class="btn" [class]="canCreateMidia()? 'btn-primary' : 'btn-secondary'"
+                    (click)="criarMidia()">
+                    
+                    Criar nova midia
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade show bg-dark-transparent" [ngClass]="{'show': modalSucessOpen}"
+    [ngStyle]="{'display': modalSucessOpen ? 'block':'none'}" tabindex="-1" aria-labelledby="exampleModalCenterTitle"
+    style="display: block;" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Midia criada com sucesso</h5>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeSucessModal()"><i class="bi bi-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-center">
+                    <i class="bi bi-check-circle text-success success-icon mx-auto"></i>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="closeSucessModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

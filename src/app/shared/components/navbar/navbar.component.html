@@ -1,62 +1,61 @@
 <div class="vh-100 navbar-rsp-dt p-md-4 text-white col-12">
-    <img src="https://uploads-ssl.webflow.com/5e2088af647de0b43c9ff21d/61780b66eefa51ff49c09fa0_Horizontal-5-p-500.png"
-            alt="logo Instituto Romanni" width="140">
-    <div class="d-flex mt-3 mb-2">
-            <!--img src="''" alt="Foto usuario" class="avatar"-->
-    </div>
-    <div class="h5">Olá, {{ user?.name }}</div>
-    <div class="h6 rounded-pill text-center fw-bold my-1 py-1" style="background-color: #ff6620">{{ 'fake rank' }}
-    </div>
-    <div class="my-3">{{ 1 }} Vendas hoje.</div>
-    <div class="my-2">
-            <div class="py-2 myNavItens" [routerLink]="['/home']" [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-house-fill me-3"></i>Home
-            </div>
-            <div class="py-2 myNavItens" [routerLink]="['/ranking']" [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-trophy-fill me-3"></i>Ranking
-            </div>
-            <div class="py-2 myNavItens" [routerLink]="['/treinamentos']" [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-mortarboard-fill me-3"></i>Treinamento
-            </div>
-            <div class="py-2 myNavItens" [routerLink]="['/midias/ver-midias']" [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-camera-reels-fill me-3"></i>Mídias
-            </div>
-            <div class="py-2 myNavItens" [routerLink]="['/sale/all']"
-                    [routerLinkActive]="'activedRoute'" *ngIf="user.admin"><i
-                            class="myIcons bi bi-file-earmark-bar-graph-fill me-3"></i>Vendas Gerais
-            </div>
-            <div class="py-2 myNavItens" [routerLink]="['/sale/user', user?.checkout_id]"
-                    [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-graph-up-arrow me-3"></i>Minhas Vendas
-            </div>
-            <div class="py-2 myNavItens" [routerLink]="['/perfil']" [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-person-circle me-3"></i>Perfil
-            </div>
-    </div>
+        <img src="https://uploads-ssl.webflow.com/5e2088af647de0b43c9ff21d/61780b66eefa51ff49c09fa0_Horizontal-5-p-500.png"
+                alt="logo Instituto Romanni" width="140">
+        <div class="d-flex mt-3 mb-2">
+                <!--img src="''" alt="Foto usuario" class="avatar"-->
+        </div>
+        <div class="h5">Olá, {{ user?.name }}</div>
+        <div class="h6 rounded-pill text-center fw-bold my-1 py-1" style="background-color: #ff6620">{{ 'fake rank' }}
+        </div>
+        <div class="my-3">{{ 1 }} Vendas hoje.</div>
+        <div class="my-2">
+                <div class="py-2 myNavItens" [routerLink]="['/home']" [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-house-fill me-3"></i>Home
+                </div>
+                <div class="py-2 myNavItens" [routerLink]="['/ranking']" [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-trophy-fill me-3"></i>Ranking
+                </div>
+                <div class="py-2 myNavItens" [routerLink]="['/treinamentos']" [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-mortarboard-fill me-3"></i>Treinamento
+                </div>
+                <div class="py-2 myNavItens" [routerLink]="['/media']" [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-card-image me-3"></i>Mídias
+                </div>
+                <div class="py-2 myNavItens" [routerLink]="['/sale/all']" [routerLinkActive]="'activedRoute'"
+                        *ngIf="user.admin"><i class="myIcons bi bi-file-earmark-bar-graph-fill me-3"></i>Vendas Gerais
+                </div>
+                <div class="py-2 myNavItens" [routerLink]="['/sale/user', user?.checkout_id]"
+                        [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-graph-up-arrow me-3"></i>Minhas Vendas
+                </div>
+                <div class="py-2 myNavItens" [routerLink]="['/perfil']" [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-person-circle me-3"></i>Perfil
+                </div>
+        </div>
 </div>
 
 <div class="w-100 navbar fixed-bottom navbar-rsp-mb">
-    <div class="my-2 row">
-            <div class="py-2 col" [routerLink]="['/home']" [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-house-fill"></i>
-            </div>
-            <div class="py-2 col" [routerLink]="['/ranking']" [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-trophy-fill"></i>
-            </div>
-            <div class="py-2 col" [routerLink]="['/vendas/vendas-gerais']" [routerLinkActive]="'activedRoute'"
-                    *ngIf="user.admin"><i class="myIcons bi bi-file-earmark-bar-graph-fill mx-1"></i>
-            </div>
-            <div class="py-2 col" [routerLink]="['/vendas/minhas-vendas']" [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-graph-up-arrow"></i>
-            </div>
-            <div class="py-2 col" [routerLink]="['/midias/ver-midias']" [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-camera-reels-fill"></i>
-            </div>
-            <div class="py-2 col" [routerLink]="['/treinamentos']" [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-mortarboard-fill"></i>
-            </div>
-            <div class="py-2 col" [routerLink]="['/perfil']" [routerLinkActive]="'activedRoute'">
-                    <i class="myIcons bi bi-person-circle"></i>
-            </div>
-    </div>
+        <div class="my-2 row">
+                <div class="py-2 col" [routerLink]="['/home']" [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-house-fill"></i>
+                </div>
+                <div class="py-2 col" [routerLink]="['/ranking']" [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-trophy-fill"></i>
+                </div>
+                <div class="py-2 col" [routerLink]="['/vendas/vendas-gerais']" [routerLinkActive]="'activedRoute'"
+                        *ngIf="user.admin"><i class="myIcons bi bi-file-earmark-bar-graph-fill mx-1"></i>
+                </div>
+                <div class="py-2 col" [routerLink]="['/vendas/minhas-vendas']" [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-graph-up-arrow"></i>
+                </div>
+                <div class="py-2 col" [routerLink]="['/midias/ver-midias']" [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-card-image"></i>
+                </div>
+                <div class="py-2 col" [routerLink]="['/treinamentos']" [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-mortarboard-fill"></i>
+                </div>
+                <div class="py-2 col" [routerLink]="['/perfil']" [routerLinkActive]="'activedRoute'">
+                        <i class="myIcons bi bi-person-circle"></i>
+                </div>
+        </div>
 </div>

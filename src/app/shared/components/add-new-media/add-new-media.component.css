@@ -1,0 +1,23 @@
+.bg-dark-transparent{
+    background-color: rgba(0, 0, 0, 0.74)!important;
+}
+
+.bg-modal{
+    background-color: #303030;
+}
+
+.btn-nova-venda{
+    background-color: #ff6620!important;
+    border-color: #af3700;  
+}
+
+.btn-nova-venda:focus{
+    outline: none !important;
+    border:1px solid #ff6620;
+    box-shadow: 0 0 10px #ff6620;
+}
+
+.success-icon{
+    text-align: center;
+    font-size: 90px;    
+}   

@@ -1,0 +1,52 @@
+.btn-admin{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 100;
+    z-index: 1030;
+}
+.deleteIcon{
+    padding: 8px 10px;
+    margin-bottom: -55px;
+    position: absolute;
+    z-index: 999;
+    right: 0px;
+    top: -10px;
+}
+
+.editIcon{
+    padding: 8px 10px;
+    margin-bottom: -55px;
+    position: absolute;
+    z-index: 999;
+    right: 40px;
+    top: -10px;
+}
+
+.my-bg-dark{
+    background-color: #303030;
+    height: 220px;
+}
+
+.foto{    
+    max-height: 165px;
+}
+
+.bg-dark-transparent{
+    background-color: rgba(0, 0, 0, 0.74)!important;
+}
+
+.bg-modal{
+    background-color: #303030;
+}
+
+.foto-opened{
+    max-height: 600px;
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 1473px) {
+    .foto-opened{
+        max-height: 450px;
+    }
+  }

@@ -15,6 +15,9 @@ import { SaleDetailComponent } from './shared/components/sale-detail/sale-detail
 import { SalesService } from './shared/services/sales.service';
 import { RankingComponent } from './pages/ranking/ranking.component';
 import { RankingService } from './shared/services/ranking.service';
+import { MediaComponent } from './pages/media/media.component';
+import { AddNewMediaComponent } from './shared/components/add-new-media/add-new-media.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,11 +25,14 @@ import { RankingService } from './shared/services/ranking.service';
     HomeComponent,
     NavbarComponent,
     SaleDetailComponent,
-    RankingComponent
+    RankingComponent,
+    MediaComponent,
+    AddNewMediaComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
     NgbModule,
     JwtModule.forRoot({
