@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MediaService } from '../../services/media.service';
 
 @Component({
   selector: 'add-new-media',
@@ -7,43 +8,68 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class AddNewMediaComponent implements OnInit {
 
-  //@ViewChild('fileInput') fileInput: ElementRef;
+
+  tags: Array<any> = [];
+  arquivoFoto: any;
+  arquivoFotoBase64: string = '';
+  imageSrc: string = '';
 
   midiaModalOpen: boolean = false;
   modalSucessOpen: boolean = false;
-  btnCreateMidia: boolean = false;
   mediaTitle: string = '';
-  tags: Array<any> = [];
-  selectedTag: string = '';
 
+  selectedTag: any;
   imageUrl: string = '';
   imageId: string = '';
 
-  constructor( ) { }
+  constructor(private mediaService: MediaService) { }
 
   ngOnInit(): void {
-    this.getTags();
+    this.mediaService.getAllMedia().subscribe(response => {
+      this.tags = response;
+      this.selectedTag = this.tags[0];
+    });
   }
 
 
   criarMidia() {
-    if (!this.canCreateMidia()) return;
+    if (!this.checkFilledForm()) return;
     // implement
-
+    // easy fock you
   }
 
-  getTags() {
-    //implement
-  }
-
-  async upload(event:any) {
+  async upload(event: any) {
     //change to convert to base64
+    let fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      const file: File = fileList[0];
+      this.arquivoFoto = file;
+      this.handleInputChange(file); //turn into base64
+    } else {
+      alert('No file selected');
+    }
+  }
 
+  handleInputChange(arquivo: File) {
+    var file = arquivo;
+    var pattern = /image-*/;
+    var reader = new FileReader();
+    if (!file.type.match(pattern)) {
+      alert('invalid format');
+      return;
+    }
+    reader.onloadend = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
 
+  _handleReaderLoaded(e: any) {
+    let reader = e.target;
+    var base64result = reader.result.substr(reader.result.indexOf(',') + 1);
+    this.imageSrc = 'data:image/png;base64,'+base64result;
+    this.arquivoFotoBase64 = base64result;
   }
 
   cancelarDeletarImagem() {
-    //if (this.imageId) this.mediaService.deletarImagem(this.imageId);
     this.cleanForm();
   }
 
@@ -62,11 +88,8 @@ export class AddNewMediaComponent implements OnInit {
 
   cleanForm() {
     this.mediaTitle = '';
-    this.desableBtnCreateMidia();
     this.imageUrl = '';
     this.imageId = '';
-    //this.fileInput.nativeElement.value = '';
-    //this.porcentNumber = 0;
   }
 
   checkFilledForm() {
@@ -82,16 +105,5 @@ export class AddNewMediaComponent implements OnInit {
     this.modalSucessOpen = true;
   }
 
-  ableBtnCreateMidia() {
-    this.btnCreateMidia = true;
-  }
-
-  desableBtnCreateMidia() {
-    this.btnCreateMidia = false;
-  }
-
-  canCreateMidia(): boolean {
-    return (this.checkFilledForm() && this.btnCreateMidia);
-  }
 
 }

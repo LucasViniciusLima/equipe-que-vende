@@ -18,7 +18,9 @@
                 <div class="py-2 myNavItens" [routerLink]="['/treinamentos']" [routerLinkActive]="'activedRoute'">
                         <i class="myIcons bi bi-mortarboard-fill me-3"></i>Treinamento
                 </div>
-                <div class="py-2 myNavItens" [routerLink]="['/media']" [routerLinkActive]="'activedRoute'">
+                <div class="py-2 myNavItens" [routerLink]="['/media']"
+                 [routerLinkActive]="'activedRoute'"
+                 [state]="user" >
                         <i class="myIcons bi bi-card-image me-3"></i>Mídias
                 </div>
                 <div class="py-2 myNavItens" [routerLink]="['/sale/all']" [routerLinkActive]="'activedRoute'"
