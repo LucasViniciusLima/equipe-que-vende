@@ -18,6 +18,7 @@ import { RankingService } from './shared/services/ranking.service';
 import { MediaComponent } from './pages/media/media.component';
 import { AddNewMediaComponent } from './shared/components/add-new-media/add-new-media.component';
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     SaleDetailComponent,
     RankingComponent,
     MediaComponent,
-    AddNewMediaComponent
+    AddNewMediaComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+.mbg-dark{
+    background-color: #303030;
+}
+
+.link-orange{
+    background-color: #ff6620;
+}
+
+@media (max-width: 905px){
+    .logo-initial-page{
+        display: none;
+    }
+}

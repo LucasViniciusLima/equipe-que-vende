@@ -1,0 +1,60 @@
+<div class="pl-md-5 my-4">
+    <div class="main-card p-4 mt-4 rounded">
+        <div class="row">
+            <div class="col-3 d-flex justify-content-center">
+                <img [src]="user?.profilePhoto" alt="Foto usuario" class="avatar" />
+            </div>
+            <div class="col-9">
+                <div>
+                    <div class="h3">
+                        {{ 'nome' }}
+                    </div>
+                    <div style="color: #ff6620;">
+                        <strong>Pronto pra vender hoje?</strong>
+                    </div>
+                </div>
+
+                <div class="my-3">
+                    <span class="rounded-pill text-center px-5 py-1" style="background-color: #ff6620">
+                        {{ 'rank' }}
+                    </span>
+                </div>
+                <div class="my-3 d-flex justify-content-start align-items-center">
+                    <span style="color: #A1A1A1;" class="mr-2">Meu código:</span>
+
+                    <span style="color: #A1A1A1;"> {{ 'utmSalesCode' }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="h4 my-4">
+        Total de matrículas
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="main-card p-4 mt-4 rounded d-flex justify-content-between">
+                <div>Geral</div>
+                <div>
+                    <i class="bi bi-people-fill mr-1"></i>{{ 'getQuantitySales()' }}
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="main-card p-4 mt-4 rounded d-flex justify-content-between">
+                <div>Este Mês</div>
+                <div>
+                    <i class="bi bi-people-fill mr-1"></i>{{ 'salesforMonth' }}
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="main-card p-4 mt-4 rounded d-flex justify-content-between">
+                <div>Em {{ 'anoAtual' }}</div>
+                <div>
+                    <i class="bi bi-people-fill mr-1"></i>{{ 'salesforYear' }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

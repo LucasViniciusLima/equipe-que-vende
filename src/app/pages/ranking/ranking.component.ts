@@ -3,7 +3,7 @@ import { RankingService } from 'src/app/shared/services/ranking.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
-  selector: 'app-ranking',
+  selector: 'ranking',
   templateUrl: './ranking.component.html',
   styleUrls: ['./ranking.component.css']
 })
