@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +8,17 @@ export class MediaService {
 
   constructor(private http: HttpClient) { }
 
+  static emitCursoCriado = new EventEmitter<any>();
+
   private readonly url: string = `http://localhost:3000/api/v1/`;
 
   getAllMedia() {
     return this.http.get<any>(`${this.url}categoria/`, { withCredentials: false });
+  }
+
+  createMedia(media: any, categoria: string) {
+    MediaService.emitCursoCriado.emit({ categoria, depoimentosFoto: media });
+    return this.http.post<any>(`${this.url}depoimentosfoto/${categoria}`, media, { withCredentials: false });
   }
 
 }

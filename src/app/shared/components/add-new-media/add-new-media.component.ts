@@ -8,7 +8,6 @@ import { MediaService } from '../../services/media.service';
 })
 export class AddNewMediaComponent implements OnInit {
 
-
   tags: Array<any> = [];
   arquivoFoto: any;
   arquivoFotoBase64: string = '';
@@ -19,32 +18,35 @@ export class AddNewMediaComponent implements OnInit {
   mediaTitle: string = '';
 
   selectedTag: any;
-  imageUrl: string = '';
-  imageId: string = '';
 
   constructor(private mediaService: MediaService) { }
 
   ngOnInit(): void {
     this.mediaService.getAllMedia().subscribe(response => {
       this.tags = response;
-      this.selectedTag = this.tags[0];
+      this.selectedTag = this.tags[0].categoria;
     });
   }
 
 
   criarMidia() {
     if (!this.checkFilledForm()) return;
-    // implement
-    // easy fock you
+
+    let media = { title: this.mediaTitle, data: this.arquivoFotoBase64 };
+
+    this.mediaService.createMedia(media, this.selectedTag).subscribe(response => {
+      this.cleanForm();
+      this.closeMidiaModal();
+      this.openSucessModal();      
+    });
   }
 
   async upload(event: any) {
-    //change to convert to base64
     let fileList: FileList = event.target.files;
     if (fileList.length > 0) {
       const file: File = fileList[0];
       this.arquivoFoto = file;
-      this.handleInputChange(file); //turn into base64
+      this.handleInputChange(file);
     } else {
       alert('No file selected');
     }
@@ -65,7 +67,7 @@ export class AddNewMediaComponent implements OnInit {
   _handleReaderLoaded(e: any) {
     let reader = e.target;
     var base64result = reader.result.substr(reader.result.indexOf(',') + 1);
-    this.imageSrc = 'data:image/png;base64,'+base64result;
+    this.imageSrc = 'data:image/png;base64,' + base64result;
     this.arquivoFotoBase64 = base64result;
   }
 
@@ -88,17 +90,18 @@ export class AddNewMediaComponent implements OnInit {
 
   cleanForm() {
     this.mediaTitle = '';
-    this.imageUrl = '';
-    this.imageId = '';
+    this.imageSrc = '';
+    this.arquivoFoto = {};
+    this.arquivoFotoBase64 = '';
   }
 
   checkFilledForm() {
-    if (this.mediaTitle == '') return false;
+    if (this.mediaTitle == '' || this.arquivoFotoBase64 == '') return false;
     else return true;
   }
 
   closeSucessModal() {
-    this.modalSucessOpen = false;
+    this.modalSucessOpen = false;    
   }
 
   openSucessModal() {
