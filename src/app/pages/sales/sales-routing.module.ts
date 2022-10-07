@@ -9,7 +9,7 @@ const vendasRoutes: Routes = [
         path: '',
         children: [
             { path: 'user/:checkout_id', component: SaleComponent, children: [ { path: ':sale_id', component: SaleDetailComponent} ] },
-            { path: 'all', /*canActivate:[AdmGuardService],*/ component: SalesComponent, children: [ { path: ':sale_id', component: SaleDetailComponent} ] },
+            { path: 'all', /*canActivate:[AdmGuardService],*/ component: SalesComponent, children: [ { path: ':sale_id/:checkout_id', component: SaleDetailComponent} ] },
         ]
     },
 ]

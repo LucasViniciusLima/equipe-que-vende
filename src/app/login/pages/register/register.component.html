@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center justify-content-center vw-100 vh-100">
+<div class="d-flex align-items-center justify-content-center min-vh-100">
     <div class="p-5" style="width: 450px;">
         <div class="d-flex justify-content-center mb-3">
             <img src="https://uploads-ssl.webflow.com/5e2088af647de0b43c9ff21d/61780b66eefa51ff49c09fa0_Horizontal-5-p-500.png"
@@ -30,7 +30,7 @@
                 <label class="form-label" style="font-size: small;">CHECKOUT ID</label>
                 <input type="text" [(ngModel)]="checkout_id" class="form-control rounded-pill"
                     placeholder="seu checkout_id (consultar na plataforma Guru)" />
-            </div>            
+            </div>             
             <span class="text-warning" *ngIf="!senhasIguais()">*Tenha certeza de que as senhas são iguais</span>
             <button class="btn btn-primary py-3 rounded-pill mt-2"
                 [class]="campoEstaPreenchido() ? 'btn-primary': 'btn-secondary'" style="width: 100%; font-size: small;"

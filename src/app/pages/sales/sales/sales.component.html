@@ -6,22 +6,25 @@
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>
-                            <th scope="col">E-mail</th>                        
+                            <th scope="col">E-mail</th>
                             <th scope="col">Data</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let sale of sales; let id = index;" [routerLink]="[sale._id]" [state]="sales" routerLinkActive="table-active" style="cursor: pointer;">
+                        <tr *ngFor="let sale of sales; let id = index;"
+                            [routerLink]="[sale._id,sale.source.checkout_id]" [state]="sales"
+                            routerLinkActive="table-active" style="cursor: pointer;">
                             <td>{{ sale.contact.name.split(' ').slice(0, 1) }}</td>
-                            <td>{{ sale.contact.email | slice:0:18 }} {{ sale.contact.email.length > 19 ? '...' : '' }}</td>                        
+                            <td>{{ sale.contact.email | slice:0:18 }} {{ sale.contact.email.length > 19 ? '...' : '' }}
+                            </td>
                             <td>{{ sale.dates.created_at | date: 'dd/MM/yyyy' }}</td>
-                        </tr>        
+                        </tr>
                     </tbody>
                 </table>
             </div>
             <div class="col-md-3">
                 <router-outlet></router-outlet>
             </div>
-        </div>    
+        </div>
     </div>
 </div>

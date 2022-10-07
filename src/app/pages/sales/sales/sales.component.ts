@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SalesService } from 'src/app/shared/services/sales.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 import { Sale } from '../sale.entity';
 
 @Component({
@@ -12,6 +13,7 @@ export class SalesComponent implements OnInit {
   sales: Sale[] = [];
 
   constructor(private salesService: SalesService) {
+
     this.salesService.getAllSales().subscribe(sales => {
       this.sales = sales;
     });
@@ -19,5 +21,7 @@ export class SalesComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 
 }

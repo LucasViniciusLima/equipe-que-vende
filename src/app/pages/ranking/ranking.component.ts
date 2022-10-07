@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RankingService } from 'src/app/shared/services/ranking.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-ranking',
@@ -13,25 +14,26 @@ export class RankingComponent implements OnInit {
   constructor(private readonly rankingService: RankingService) { }
 
   ngOnInit(): void {
-    this.rankingService.getActualMonthRanking().subscribe(rank =>{
+    this.rankingService.getActualMonthRanking().subscribe(rank => {
       this.rankList = rank;
       this.insertionSort();
     });
+    
   }
 
   insertionSort() {
-		for (let i = 1; i < this.rankList.length; i++) {
+    for (let i = 1; i < this.rankList.length; i++) {
 
-			let aux = this.rankList[i];
-			let j = i;
+      let aux = this.rankList[i];
+      let j = i;
 
-			while ((j > 0) && (this.rankList[j - 1]?.salesCount < aux?.salesCount)) {
-				this.rankList[j] = this.rankList[j - 1];
-				j -= 1;
-			}
-			this.rankList[j] = aux;
-		}
-	}
+      while ((j > 0) && (this.rankList[j - 1]?.salesCount < aux?.salesCount)) {
+        this.rankList[j] = this.rankList[j - 1];
+        j -= 1;
+      }
+      this.rankList[j] = aux;
+    }
+  }
 
 
   rank(rank: number): string {
@@ -40,5 +42,5 @@ export class RankingComponent implements OnInit {
     else if (rank >= 20 && rank < 50) return "Protagonista";
     return "Transformacional";
   }
-
+ 
 }
