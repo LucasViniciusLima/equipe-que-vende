@@ -10,7 +10,7 @@ export class MediaService {
 
   static emitCursoCriado = new EventEmitter<any>();
 
-  private readonly url: string = `http://localhost:3000/api/v1/`;
+  private readonly url: string = `https://equipe-que-vende-api.herokuapp.com/api/v1/`;
 
   getAllMedia() {
     return this.http.get<any>(`${this.url}categoria/`, { withCredentials: false });

@@ -14,7 +14,7 @@ export class LoginService {
 
   private readonly TOKEN_NAME = 'eqvendas_auth';
   private readonly EMAIL_USER = 'UserEmail';
-  private readonly url: string = `http://localhost:3000/api/v1/`;
+  private readonly url: string = `https://equipe-que-vende-api.herokuapp.com/api/v1/`;
 
   isAuthenticated() {
     const token = localStorage.getItem(this.TOKEN_NAME) || undefined;

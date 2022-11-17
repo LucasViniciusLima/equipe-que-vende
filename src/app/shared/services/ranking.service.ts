@@ -8,7 +8,7 @@ export class RankingService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly url: string = `http://localhost:3000/api/v1/`;
+  private readonly url: string = `https://equipe-que-vende-api.herokuapp.com/api/v1/`;
 
   getRankingByMonth(date: string) {
     return this.http.get<any>(`${this.url}ranking/${date}`, { withCredentials: false });
